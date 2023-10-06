@@ -2267,3 +2267,230 @@ def analyze_data(dfs: list[pd.DataFrame]) ->dict:
 result = analyze_data(dfs)
         ```
 2023-10-04 15:42:13 [INFO] Executed in: 6.470301151275635s
+2023-10-07 00:53:38 [INFO] Question: How many locations are there?
+2023-10-07 00:53:38 [INFO] Running PandasAI with openai LLM...
+2023-10-07 00:53:38 [INFO] Prompt ID: 036fc024-67c9-4fe9-b5d8-c9aadfa54aa5
+2023-10-07 00:53:38 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 335982 rows and 67 columns.
+This is the metadata of the dataframe dfs[0]:
+iso_code,continent,location,date,total_cases,new_cases,new_cases_smoothed,total_deaths,new_deaths,new_deaths_smoothed,total_cases_per_million,new_cases_per_million,new_cases_smoothed_per_million,total_deaths_per_million,new_deaths_per_million,new_deaths_smoothed_per_million,reproduction_rate,icu_patients,icu_patients_per_million,hosp_patients,hosp_patients_per_million,weekly_icu_admissions,weekly_icu_admissions_per_million,weekly_hosp_admissions,weekly_hosp_admissions_per_million,total_tests,new_tests,total_tests_per_thousand,new_tests_per_thousand,new_tests_smoothed,new_tests_smoothed_per_thousand,positive_rate,tests_per_case,tests_units,total_vaccinations,people_vaccinated,people_fully_vaccinated,total_boosters,new_vaccinations,new_vaccinations_smoothed,total_vaccinations_per_hundred,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,total_boosters_per_hundred,new_vaccinations_smoothed_per_million,new_people_vaccinated_smoothed,new_people_vaccinated_smoothed_per_hundred,stringency_index,population_density,median_age,aged_65_older,aged_70_older,gdp_per_capita,extreme_poverty,cardiovasc_death_rate,diabetes_prevalence,female_smokers,male_smokers,handwashing_facilities,hospital_beds_per_thousand,life_expectancy,human_development_index,population,excess_mortality_cumulative_absolute,excess_mortality_cumulative,excess_mortality,excess_mortality_cumulative_per_million
+AFG,Asia,Afghanistan,2020-01-04,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-07,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-03,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-05,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-06,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+</dataframe>
+
+<conversation>
+User 1: How many locations are there?
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-07 00:53:48 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    num_locations = len(dfs[0]['location'].unique())
+    result = {
+        "type": "number",
+        "value": num_locations
+    }
+    return result
+```
+
+2023-10-07 00:53:48 [WARNING] Failed to execute code with a correction framework [retry number: 1]
+2023-10-07 00:53:48 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/smart_datalake/__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/code_manager.py", line 209, in execute_code
+    code = add_save_chart(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/save_chart.py", line 27, in add_save_chart
+    makedirs(save_charts_path)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/os.py", line 225, in makedirs
+    mkdir(name, mode)
+FileNotFoundError: [Errno 2] No such file or directory: ''
+. Retrying
+2023-10-07 00:53:48 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 335982 rows and 67 columns.
+This is the metadata of the dataframe dfs[0]:
+iso_code,continent,location,date,total_cases,new_cases,new_cases_smoothed,total_deaths,new_deaths,new_deaths_smoothed,total_cases_per_million,new_cases_per_million,new_cases_smoothed_per_million,total_deaths_per_million,new_deaths_per_million,new_deaths_smoothed_per_million,reproduction_rate,icu_patients,icu_patients_per_million,hosp_patients,hosp_patients_per_million,weekly_icu_admissions,weekly_icu_admissions_per_million,weekly_hosp_admissions,weekly_hosp_admissions_per_million,total_tests,new_tests,total_tests_per_thousand,new_tests_per_thousand,new_tests_smoothed,new_tests_smoothed_per_thousand,positive_rate,tests_per_case,tests_units,total_vaccinations,people_vaccinated,people_fully_vaccinated,total_boosters,new_vaccinations,new_vaccinations_smoothed,total_vaccinations_per_hundred,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,total_boosters_per_hundred,new_vaccinations_smoothed_per_million,new_people_vaccinated_smoothed,new_people_vaccinated_smoothed_per_hundred,stringency_index,population_density,median_age,aged_65_older,aged_70_older,gdp_per_capita,extreme_poverty,cardiovasc_death_rate,diabetes_prevalence,female_smokers,male_smokers,handwashing_facilities,hospital_beds_per_thousand,life_expectancy,human_development_index,population,excess_mortality_cumulative_absolute,excess_mortality_cumulative,excess_mortality,excess_mortality_cumulative_per_million
+AFG,Asia,Afghanistan,2020-01-04,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-07,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-03,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-05,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-06,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+</dataframe>
+
+The user asked the following question:
+User 1: How many locations are there?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    num_locations = len(dfs[0]['location'].unique())
+    result = {
+        "type": "number",
+        "value": num_locations
+    }
+    return result
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/smart_datalake/__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/code_manager.py", line 209, in execute_code
+    code = add_save_chart(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/save_chart.py", line 27, in add_save_chart
+    makedirs(save_charts_path)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/os.py", line 225, in makedirs
+    mkdir(name, mode)
+FileNotFoundError: [Errno 2] No such file or directory: ''
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
+2023-10-07 00:53:57 [WARNING] Failed to execute code with a correction framework [retry number: 2]
+2023-10-07 00:53:57 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/smart_datalake/__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/code_manager.py", line 209, in execute_code
+    code = add_save_chart(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/save_chart.py", line 27, in add_save_chart
+    makedirs(save_charts_path)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/os.py", line 225, in makedirs
+    mkdir(name, mode)
+FileNotFoundError: [Errno 2] No such file or directory: ''
+. Retrying
+2023-10-07 00:53:57 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames with the following metadata:
+
+<dataframe>
+Dataframe dfs[0], with 335982 rows and 67 columns.
+This is the metadata of the dataframe dfs[0]:
+iso_code,continent,location,date,total_cases,new_cases,new_cases_smoothed,total_deaths,new_deaths,new_deaths_smoothed,total_cases_per_million,new_cases_per_million,new_cases_smoothed_per_million,total_deaths_per_million,new_deaths_per_million,new_deaths_smoothed_per_million,reproduction_rate,icu_patients,icu_patients_per_million,hosp_patients,hosp_patients_per_million,weekly_icu_admissions,weekly_icu_admissions_per_million,weekly_hosp_admissions,weekly_hosp_admissions_per_million,total_tests,new_tests,total_tests_per_thousand,new_tests_per_thousand,new_tests_smoothed,new_tests_smoothed_per_thousand,positive_rate,tests_per_case,tests_units,total_vaccinations,people_vaccinated,people_fully_vaccinated,total_boosters,new_vaccinations,new_vaccinations_smoothed,total_vaccinations_per_hundred,people_vaccinated_per_hundred,people_fully_vaccinated_per_hundred,total_boosters_per_hundred,new_vaccinations_smoothed_per_million,new_people_vaccinated_smoothed,new_people_vaccinated_smoothed_per_hundred,stringency_index,population_density,median_age,aged_65_older,aged_70_older,gdp_per_capita,extreme_poverty,cardiovasc_death_rate,diabetes_prevalence,female_smokers,male_smokers,handwashing_facilities,hospital_beds_per_thousand,life_expectancy,human_development_index,population,excess_mortality_cumulative_absolute,excess_mortality_cumulative,excess_mortality,excess_mortality_cumulative_per_million
+AFG,Asia,Afghanistan,2020-01-04,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-07,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-03,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-05,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+AFG,Asia,Afghanistan,2020-01-06,,0.0,,,0.0,,,0.0,,,0.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,0.0,54.422,18.6,2.581,1.337,1803.987,,597.029,9.59,,,37.746,0.5,64.83,0.511,41128772.0,,,,
+</dataframe>
+
+The user asked the following question:
+User 1: How many locations are there?
+
+You generated this python code:
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    num_locations = len(dfs[0]['location'].unique())
+    result = {
+        "type": "number",
+        "value": num_locations
+    }
+    return result
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/smart_datalake/__init__.py", line 337, in chat
+    result = self._code_manager.execute_code(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/code_manager.py", line 209, in execute_code
+    code = add_save_chart(
+  File "/Users/waizwafiq/Documents/Projects/langsphere/langsphere_env/lib/python3.9/site-packages/pandasai/helpers/save_chart.py", line 27, in add_save_chart
+    makedirs(save_charts_path)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/os.py", line 225, in makedirs
+    mkdir(name, mode)
+FileNotFoundError: [Errno 2] No such file or directory: ''
+
+
+Correct the python code and return a new python code that fixes the above mentioned error. Do not generate the same code again.
+
