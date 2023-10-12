@@ -5,7 +5,11 @@ from components import footer
 def main():
     disclaimer_text = "***Disclaimer: I am not responsible for any damages caused to your academic reputation in any form of plagiarism***"
 
-    st.set_page_config(page_title="LangSphere", page_icon=":brain:")
+    st.set_page_config(
+        layout="wide",
+        page_title="LangSphere",
+        page_icon=":brain:"
+    )
 
     st.markdown("<h1 style='text-align: center; color: green;'>Welcome to LangSphere!</h1>",
                 unsafe_allow_html=True)
