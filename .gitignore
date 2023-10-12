@@ -3,3 +3,4 @@ langsphere_env
 __pycache__
 .vscode
 .DS_Store
+.vs
